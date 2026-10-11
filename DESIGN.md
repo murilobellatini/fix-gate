@@ -46,6 +46,14 @@ Do not implement G4.
 - Rubrics, bug patches, and hidden tests must be committed before the first agent run.
 - Do not change them after the first run.
 
+## Security
+
+Security is out of scope.
+
+- The app has no authentication, authorization, or rate limiting.
+- Do not deploy it publicly.
+- Run it only on localhost.
+
 ## Done for this milestone
 
 - `make install` works.

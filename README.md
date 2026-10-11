@@ -26,7 +26,7 @@ That something is a **gate**: a set of checks every patch must pass. But nobody 
 2. Plant 6 bugs in it. Each bug is a different kind of trap.
 3. Let an AI try to fix each bug 3 times. That is 18 attempts.
 4. Check every fix by hand: is it actually right, or does it just look right?
-5. Run each fix through 5 levels of checking, from "no gate" to "full gate."
+5. Run each fix through 4 levels of checking, from "no gate" to "full gate."
 
 Then count what happened.
 
@@ -66,7 +66,6 @@ An attempt that does not apply or crashes is counted as Invalid, on its own.
 | G1 Visible tests | pending | pending | pending | pending | pending |
 | G2 + hidden tests | pending | pending | pending | pending | pending |
 | G3 + no test edits | pending | pending | pending | pending | pending |
-| G4 + file review | pending | pending | pending | pending | pending |
 
 > 18 attempts is a small snapshot. Differences of 2 or 3 may be noise. This shows a method and an honest result, not a general benchmark.
 
@@ -76,7 +75,18 @@ If a wrong fix slips through, I will report it and explain why. A zero is not th
 
 ## How to run
 
-Coming soon: `make run`.
+```bash
+make install
+make run
+```
+
+Then open: `http://127.0.0.1:8000`
+
+## Security
+
+This app is for a local experiment. It has no login, permissions, or rate limiting.
+
+**Do not deploy it publicly.** Run it only on your own computer.
 
 ## Limits
 
