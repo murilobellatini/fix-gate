@@ -13,11 +13,13 @@
 <body>
   <h1>To-Do</h1>
 
+  <!-- Add a new task -->
   <form id="add-form">
     <input id="title" placeholder="Task title" required>
     <button>Add</button>
   </form>
 
+  <!-- Show all tasks -->
   <ul id="tasks"></ul>
 
   <script>
@@ -68,6 +70,7 @@
       loadTasks();
     });
 
+    // Load tasks when the page opens.
     loadTasks();
   </script>
 </body>
