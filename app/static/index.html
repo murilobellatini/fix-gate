@@ -1,0 +1,74 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>fix-gate To-Do</title>
+  <style>
+    body { font-family: system-ui, sans-serif; max-width: 480px; margin: 40px auto; padding: 0 16px; }
+    li { display: flex; gap: 8px; align-items: center; margin: 8px 0; }
+    .completed { text-decoration: line-through; }
+  </style>
+</head>
+<body>
+  <h1>To-Do</h1>
+
+  <form id="add-form">
+    <input id="title" placeholder="Task title" required>
+    <button>Add</button>
+  </form>
+
+  <ul id="tasks"></ul>
+
+  <script>
+    async function loadTasks() {
+      const response = await fetch('/tasks');
+      const tasks = await response.json();
+      const list = document.getElementById('tasks');
+      list.innerHTML = '';
+
+      for (const task of tasks) {
+        const item = document.createElement('li');
+        item.dataset.id = task.id;
+
+        const title = document.createElement('span');
+        title.textContent = task.title;
+        if (task.completed) title.className = 'completed';
+
+        const completeButton = document.createElement('button');
+        completeButton.textContent = 'Complete';
+        completeButton.onclick = async () => {
+          await fetch(`/tasks/${task.id}/complete`, { method: 'PATCH' });
+          loadTasks();
+        };
+
+        const deleteButton = document.createElement('button');
+        deleteButton.textContent = 'Delete';
+        deleteButton.onclick = async () => {
+          await fetch(`/tasks/${task.id}`, { method: 'DELETE' });
+          loadTasks();
+        };
+
+        item.append(title, completeButton, deleteButton);
+        list.append(item);
+      }
+    }
+
+    document.getElementById('add-form').addEventListener('submit', async (event) => {
+      event.preventDefault();
+      const title = document.getElementById('title').value;
+
+      await fetch('/tasks', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ title })
+      });
+
+      document.getElementById('title').value = '';
+      loadTasks();
+    });
+
+    loadTasks();
+  </script>
+</body>
+</html>
