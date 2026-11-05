@@ -1,5 +1,8 @@
 # fix-gate
 
+> AI assistants send fixes with green tests. Some are wrong.
+> This experiment measures which checks catch them before merge.
+
 > **Status: results pending.** The experiment is being built. No numbers yet, and none are claimed.
 
 ## Your AI says it fixed the bug. Do you merge it?
