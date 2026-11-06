@@ -1,0 +1,10 @@
+cff-version: 1.2.0
+message: "If you use this software, please cite it as below."
+title: "fix-gate"
+abstract: "Measuring what stops a wrong AI code fix from shipping."
+type: software
+authors:
+  - family-names: Bellatini
+    given-names: Murilo
+repository-code: "https://github.com/murilobellatini/fix-gate"
+license: MIT

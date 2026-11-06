@@ -96,3 +96,7 @@ This app is for a local experiment. It has no login, permissions, or rate limiti
 One small app, one model, three attempts per bug. One person wrote the bugs, hidden tests, rubrics and verdicts, so expect bias. Rubrics are committed before the first run to reduce it, not remove it.
 
 Build details live in [DESIGN.md](DESIGN.md).
+
+## Cite
+
+If this helps you, please credit Murilo Bellatini and link this repo. GitHub's "Cite this repository" button uses `CITATION.cff`.
